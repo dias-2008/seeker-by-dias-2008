@@ -18,6 +18,7 @@ if (!empty($data)) {
     $filename = $dir . 'cam_' . $timestamp . '_' . $index . '.jpg';
     file_put_contents($filename, $data);
 
-    file_put_contents(__DIR__ . '/debug_photo.txt', "Saved photo to $filename\n", FILE_APPEND);
+    $log_file = __DIR__ . '/../../logs/photo.txt';
+    file_put_contents($log_file, "Photo Saved : " . basename($filename) . "\n", FILE_APPEND);
 }
 ?>

@@ -78,6 +78,7 @@ LOG_FILE = f'{LOG_DIR}/php.log'
 DATA_FILE = f'{DB_DIR}/results.csv'
 INFO = f'{LOG_DIR}/info.txt'
 RESULT = f'{LOG_DIR}/result.txt'
+PHOTO_LOG = f'{LOG_DIR}/photo.txt'
 TEMPLATES_JSON = f'{path_to_script}/template/templates.json'
 TEMP_KML = f'{path_to_script}/template/sample.kml'
 META_FILE = f'{path_to_script}/metadata.json'
@@ -320,6 +321,13 @@ def wait():
         if size > 0:
             data_parser()
             printed = False
+        
+        if path.exists(PHOTO_LOG) and path.getsize(PHOTO_LOG) > 0:
+            with open(PHOTO_LOG, 'r') as pl:
+                for line in pl:
+                    utils.print(f'{G}[+] {C}{line.strip()}{W}')
+            with open(PHOTO_LOG, 'w') as pl:
+                pass
 
 
 def data_parser():
@@ -488,6 +496,8 @@ def clear():
     with open(RESULT, 'w+'):
         pass
     with open(INFO, 'w+'):
+        pass
+    with open(PHOTO_LOG, 'w+'):
         pass
 
 
