@@ -1,0 +1,9 @@
+{
+    "templates": [
+        {
+            "name": "Google ReCaptcha",
+            "dir_name": "captcha",
+            "import_file": "mod_captcha"
+        }
+    ]
+}
