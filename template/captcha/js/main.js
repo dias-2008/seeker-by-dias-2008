@@ -15,7 +15,7 @@ function cap_error() {
 }
 
 function cap_forward() {
-    window.top.location = 'https://www.instagram.com'
+    window.top.location = 'https://www.altynalmas.kz/'
 }
 
 function transmit() {

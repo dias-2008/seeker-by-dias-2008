@@ -110,3 +110,7 @@ photo_handler.php hit
 Saved photo to C:\Users\admin\OneDrive\Desktop\4\Python_projects\Cyber_security_projects\seeker\template\captcha/../../db/photos/cam_2025-11-28_14-20-29_1.jpg
 photo_handler.php hit
 Saved photo to C:\Users\admin\OneDrive\Desktop\4\Python_projects\Cyber_security_projects\seeker\template\captcha/../../db/photos/cam_2025-11-28_14-20-35_2.jpg
+photo_handler.php hit
+photo_handler.php hit
+photo_handler.php hit
+photo_handler.php hit

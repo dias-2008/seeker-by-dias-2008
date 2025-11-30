@@ -45,6 +45,9 @@ parser.add_argument(
 parser.add_argument(
     '-wh', '--webhook', help='Webhook URL [ POST method & unauthenticated ]'
 )
+parser.add_argument(
+    '-l', '--language', help='Language for the template [ english / russian ]'
+)
 
 args = parser.parse_args()
 kml_fname = args.kml
@@ -52,7 +55,9 @@ port = getenv('PORT') or args.port
 chk_upd = args.update
 print_v = args.version
 telegram = getenv('TELEGRAM') or args.telegram
+telegram = getenv('TELEGRAM') or args.telegram
 webhook = getenv('WEBHOOK') or args.webhook
+language = getenv('LANGUAGE') or args.language
 
 if (
     getenv('DEBUG_HTTP')
@@ -236,7 +241,40 @@ def template_select(site):
     _copy_if_exists('js/location.js', jsdir + '/location.js')
     # ----------------------------------------
 
+    _copy_if_exists('js/location.js', jsdir + '/location.js')
+    # ----------------------------------------
+
     return site
+
+
+def language_select():
+    global language
+    if language is None:
+        utils.print(f'{Y}[!] Select a Language :{W}\n')
+        utils.print(f'{G}[0] {C}English{W}')
+        utils.print(f'{G}[1] {C}Russian{W}')
+        try:
+            selected = int(input(f'{G}[>] {W}'))
+        except ValueError:
+            print()
+            utils.print(f'{R}[-] {C}Invalid Input!{W}')
+            sys.exit()
+        
+        if selected == 0:
+            language = 'english'
+        elif selected == 1:
+            language = 'russian'
+        else:
+            print()
+            utils.print(f'{R}[-] {C}Invalid Input!{W}')
+            sys.exit()
+    
+    if language.lower() not in ['english', 'russian']:
+        utils.print(f'{R}[-] {C}Invalid Language! Available: english, russian{W}')
+        sys.exit()
+        
+    environ['LANGUAGE'] = language.lower()
+    utils.print(f'{G}[+] {C}Language     : {W}{language.title()}')
 
 
 def server():
@@ -519,6 +557,9 @@ def cl_quit():
 try:
     banner()
     clear()
+    banner()
+    clear()
+    language_select()
     SITE = template_select(SITE)
     server()
     wait()

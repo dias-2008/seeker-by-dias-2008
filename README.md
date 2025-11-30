@@ -107,7 +107,7 @@ python3 seeker.py
 In order to run in tunnel mode, install ngrok by running this command in the terminal:
 
 ```bash
-usage: seeker.py [-h] [-k KML] [-p PORT] [-u] [-v] [-t TEMPLATE] [-d] [--telegram token:chatId] [--webhook WEBHOOK]
+usage: seeker.py [-h] [-k KML] [-p PORT] [-u] [-v] [-t TEMPLATE] [-d] [--telegram token:chatId] [--webhook WEBHOOK] [-l LANGUAGE]
 
 options:
   -h, --help                            show this help message and exit
@@ -122,6 +122,7 @@ options:
                                         format = token:chatId separated by a colon
   --webhook                             Send events to a webhook endpoint to be processed
                                         Note : endpoint must be unauthenticated and accept POST request
+  -l LANGUAGE, --language LANGUAGE      Language for the template [ english / russian ]
 ```
 
 ### Environment Variables
@@ -144,6 +145,7 @@ Variables:
 *   `ONLINE_NUM`: Provide the number of the group online members (Telegram so far)
 *   `TELEGRAM`: Provide telegram token and chat to use to send info to a telegram bot. format = token:chatId separated by a colon
 *   `WEBHOOK`: Provide the webhook url to forward the events to. Note : endpoint should be unauthenticated and accept POST method
+*   `LANGUAGE`: Provide the language to use [ english / russian ]
 
 ### Usage Examples
 
